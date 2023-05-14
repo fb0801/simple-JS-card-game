@@ -20,8 +20,16 @@ export default class Deck {
     constructor(cards){
         this.cards =cards
     }
+    get numberOfCards(){
+        return this.cards.length
+    }
     shuffle(){
-        this.cards.sort((a,b) => Math.random() - .5)
+        for(let i =this.numberOfCards -1; i >0; i--){
+            const newIndex = Math.floor(Math.random() * (i +1))
+            const oldValue = this.cards[newIndex]
+            this.cards[newIndex] = this.cards[i]
+            this.cards[i] = oldValue
+        }
     }
 }
 
